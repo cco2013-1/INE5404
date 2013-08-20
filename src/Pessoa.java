@@ -7,9 +7,8 @@ public class Pessoa {
 	private String tratamento;
 	private String nascimento;
 	private String email;
-	private String profissional;
 
-	public Pessoa (String vNome, int vCPF, int vTelefoneMovel,int vTelefoneFixo, String vTratamento, String vNascimento,String vEmail, String vProfissional) {
+	public Pessoa (String vNome, int vCPF, int vTelefoneMovel,int vTelefoneFixo, String vTratamento, String vNascimento,String vEmail) {
 		nome = vNome;
 		cpf=vCPF;
 		telefoneMovel=vTelefoneMovel;
@@ -17,7 +16,6 @@ public class Pessoa {
 		tratamento=vTratamento;
 		nascimento = vNascimento;
 		email=vEmail;
-		profissional=vProfissional;
 	}
 	public String toString(){
 		String mensagem = "Nome: "+this.nome+
@@ -25,8 +23,7 @@ public class Pessoa {
 				"\n"+"Data de Nascimento: "+this.nascimento+
 				"\n"+"Telefone Celular: "+this.telefoneMovel+" Telefone Fixo: "+this.telefoneFixo+
 				"\n"+"E-mail: "+this.email+
-				"\n"+"Tratamento: "+this.tratamento+
-				"\n"+"Profissional: "+this.profissional;
+				"\n"+"Tratamento: "+this.tratamento;
 		return mensagem;
 	}
 	public String getNome() {
@@ -71,12 +68,5 @@ public class Pessoa {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getProfissional() {
-		return profissional;
-	}
-	public void setProfissional(String profissional) {
-		this.profissional = profissional;
-	}
-	
 
 }
