@@ -1,19 +1,17 @@
-public class Pessoa {
+public abstract class Pessoa {
 
 	private String nome;
 	private int cpf;
 	private int telefoneMovel;
 	private int telefoneFixo;
-	private String tratamento;
 	private String nascimento;
 	private String email;
 
-	public Pessoa (String vNome, int vCPF, int vTelefoneMovel,int vTelefoneFixo, String vTratamento, String vNascimento,String vEmail) {
+	public Pessoa (String vNome, int vCPF, int vTelefoneMovel,int vTelefoneFixo, String vNascimento,String vEmail) {
 		nome = vNome;
 		cpf=vCPF;
 		telefoneMovel=vTelefoneMovel;
 		telefoneFixo=vTelefoneFixo;
-		tratamento=vTratamento;
 		nascimento = vNascimento;
 		email=vEmail;
 	}
@@ -22,8 +20,7 @@ public class Pessoa {
 				"\n"+"CPF: "+this.cpf+
 				"\n"+"Data de Nascimento: "+this.nascimento+
 				"\n"+"Telefone Celular: "+this.telefoneMovel+" Telefone Fixo: "+this.telefoneFixo+
-				"\n"+"E-mail: "+this.email+
-				"\n"+"Tratamento: "+this.tratamento;
+				"\n"+"E-mail: "+this.email;
 		return mensagem;
 	}
 	public String getNome() {
@@ -49,12 +46,6 @@ public class Pessoa {
 	}
 	public void setTelefoneFixo(int telefoneFixo) {
 		this.telefoneFixo = telefoneFixo;
-	}
-	public String getTratamento() {
-		return tratamento;
-	}
-	public void setTratamento(String tratamento) {
-		this.tratamento = tratamento;
 	}
 	public String getNascimento() {
 		return nascimento;
