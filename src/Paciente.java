@@ -1,13 +1,22 @@
-
+/**
+ * Classe Paciente
+ * @author Matheus Ben-Hur
+ * @author Vinicius Teixeira
+ * 
+ * Representa um Paciente no âmbito do projeto
+ * de software para clínica de fisioterapia
+ *
+ */
 public class Paciente extends Pessoa {
 	private String tratamento;
 	private Profissional profissional;
 	
-	public Paciente(String vNome, int vCPF, int vTelefoneMovel,
-			int vTelefoneFixo, String vNascimento, String vEmail, String vTratamento, Profissional vProfissional) {
-		super(vNome, vCPF, vTelefoneMovel, vTelefoneFixo, vNascimento, vEmail);
-		tratamento = vTratamento;
-		profissional = vProfissional;
+	public Paciente(String nome, int cpf, int telefoneMovel,
+			int telefoneFixo, String nascimento, String email, String tratamento, 
+			Profissional profissional) {
+		super(nome, cpf, telefoneMovel, telefoneFixo, nascimento, email);
+		this.tratamento = tratamento;
+		this.profissional = profissional;
 	}
 
 	public String getTratamento() {
