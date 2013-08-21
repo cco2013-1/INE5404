@@ -1,5 +1,16 @@
+/**
+ * Class Pessoa
+ * @author Matheus Ben-Hur
+ * @author Vinicius Teixeira
+ * 
+ * Classe que representa uma pessoa, no
+ * âmbito do projeto de softwar para clínica
+ * de fisioterapia.
+ *
+ */
 public abstract class Pessoa {
-
+	
+	//Atributos
 	private String nome;
 	private int cpf;
 	private int telefoneMovel;
@@ -7,6 +18,7 @@ public abstract class Pessoa {
 	private String nascimento;
 	private String email;
 
+	//Construtor
 	public Pessoa (String nome, int cpf, int telefoneMovel, int telefoneFixo, 
 			String nascimento, String email) {
 		this.nome = nome;
@@ -16,6 +28,13 @@ public abstract class Pessoa {
 		this.nascimento = nascimento;
 		this.email=email;
 	}
+	
+	/**
+	 * Método toString
+	 * Fornece representação do objeto em forma de 
+	 * string
+	 */
+	@Override
 	public String toString(){
 		String mensagem = "Nome: "+this.nome+
 				"\n"+"CPF: "+this.cpf+
@@ -24,6 +43,8 @@ public abstract class Pessoa {
 				"\n"+"E-mail: "+this.email;
 		return mensagem;
 	}
+	
+	//Getters & Setters
 	public String getNome() {
 		return nome;
 	}
