@@ -7,13 +7,14 @@ public abstract class Pessoa {
 	private String nascimento;
 	private String email;
 
-	public Pessoa (String vNome, int vCPF, int vTelefoneMovel,int vTelefoneFixo, String vNascimento,String vEmail) {
-		nome = vNome;
-		cpf=vCPF;
-		telefoneMovel=vTelefoneMovel;
-		telefoneFixo=vTelefoneFixo;
-		nascimento = vNascimento;
-		email=vEmail;
+	public Pessoa (String nome, int cpf, int telefoneMovel, int telefoneFixo, 
+			String nascimento, String email) {
+		this.nome = nome;
+		this.cpf=cpf;
+		this.telefoneMovel=telefoneMovel;
+		this.telefoneFixo=telefoneFixo;
+		this.nascimento = nascimento;
+		this.email=email;
 	}
 	public String toString(){
 		String mensagem = "Nome: "+this.nome+
@@ -30,31 +31,31 @@ public abstract class Pessoa {
 		this.nome = nome;
 	}
 	public int getCpf() {
-		return cpf;
+		return this.cpf;
 	}
 	public void setCpf(int cpf) {
 		this.cpf = cpf;
 	}
 	public int getTelefoneMovel() {
-		return telefoneMovel;
+		return this.telefoneMovel;
 	}
 	public void setTelefoneMovel(int telefoneMovel) {
 		this.telefoneMovel = telefoneMovel;
 	}
 	public int getTelefoneFixo() {
-		return telefoneFixo;
+		return this.telefoneFixo;
 	}
 	public void setTelefoneFixo(int telefoneFixo) {
 		this.telefoneFixo = telefoneFixo;
 	}
 	public String getNascimento() {
-		return nascimento;
+		return this.nascimento;
 	}
 	public void setNascimento(String nascimento) {
 		this.nascimento = nascimento;
 	}
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
