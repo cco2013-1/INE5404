@@ -1,5 +1,7 @@
+<<<<<<< HEAD:src/model/Paciente.java
 package model;
 
+=======
 /**
  * Classe Paciente
  * @author Matheus Ben-Hur
@@ -9,7 +11,7 @@ package model;
  * de software para clínica de fisioterapia
  *
  */
-
+>>>>>>> 12aa695d38d19bc22220e4095ba809cd08a333a4:src/Paciente.java
 public class Paciente extends Pessoa {
 	private String tratamento;
 	private Profissional profissional;

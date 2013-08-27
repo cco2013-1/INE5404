@@ -1,4 +1,6 @@
+<<<<<<< HEAD:src/model/Pessoa.java
 package model;
+=======
 /**
  * Class Pessoa
  * @author Matheus Ben-Hur
@@ -9,6 +11,7 @@ package model;
  * de fisioterapia.
  *
  */
+>>>>>>> 12aa695d38d19bc22220e4095ba809cd08a333a4:src/Pessoa.java
 public abstract class Pessoa {
 	
 	//Atributos
