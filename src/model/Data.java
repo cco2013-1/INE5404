@@ -16,7 +16,7 @@ public class Data extends GregorianCalendar {
 	}
 	
 	/**
-	 * MŽtodo toStringDB
+	 * MÃ©todo toStringDB
 	 * Retorna uma data formatada conforme ISO8601.
 	 * "YYYY-MM-DD"
 	 * Ex: "2013-08-28"
@@ -33,7 +33,7 @@ public class Data extends GregorianCalendar {
 	}
 	
 	/**
-	 * MŽtodo toString
+	 * MÃ©todo toString
 	 * Retorna a data formatada como "DD/MM/YYYY"
 	 */
 	public String toString(){

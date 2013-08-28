@@ -17,9 +17,9 @@ public class Hora extends java.util.GregorianCalendar {
 	}
 	
 	/**
-	 * Constr—i novo objeto hora, a partir de objeto hora
-	 * fornecido. Aplic‡vel quando se deseja c—pia profunda
-	 * e n‹o c—pia de ponteiro.
+	 * ConstrÃ³i novo objeto hora, a partir de objeto hora
+	 * fornecido. AplicÃ¡vel quando se deseja cÃ³pia profunda
+	 * e nÃ£o cÃ³pia de ponteiro.
 	 * @param h
 	 */
 	public Hora(Hora h){

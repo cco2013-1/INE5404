@@ -2,10 +2,10 @@ package model;
 
 /**
  * Interface DatabaseObject
- * Esta interface define métodos comuns a todos os objetos
- * que serão gravados em banco de dados.
+ * Esta interface define m√©todos comuns a todos os objetos
+ * que ser√£o gravados em banco de dados.
  * 
- * Estes métodos incluem: gravarDados e consultar dados (por parametros
+ * Estes m√©todos incluem: gravarDados e consultar dados (por parametros
  * e por id)
  * @author vinicius
  *
@@ -13,10 +13,10 @@ package model;
 public interface DatabaseObject {
 	
 	/**
-	 * Método getID()
-	 * Este método deverá retornar o id atribuído
-	 * a um objeto após sua gravação em um banco de dados.
-	 * @return id Atribuído ao objeto gravado
+	 * M√©todo getID()
+	 * Este m√©todo dever√° retornar o id atribu√≠do
+	 * a um objeto ap√≥s sua grava√ß√£o em um banco de dados.
+	 * @return id Atribu√≠do ao objeto gravado
 	 */
 	public int getID();
 }

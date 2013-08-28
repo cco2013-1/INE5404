@@ -25,20 +25,20 @@ public class DadosPessoais implements DatabaseObject {
 	private Data dataNascimento;
 	private String CPF;
 	private String RG;
-	private int idDadosPessoais; //Id atribu’do quando gravado o objeto no banco de dados.
+	private int idDadosPessoais; //Id atribuÃ­do quando gravado o objeto no banco de dados.
 	
 	public DadosPessoais(String nome, Data dataNascimento, String CPF, String RG) throws IOException{
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		if(this.validaCPF(CPF)) this.CPF = formataCPF(CPF);
-		else throw new IOException("CPF inv‡lido");
+		else throw new IOException("CPF invï¿½lido");
 		this.RG = RG;
 		this.gravarDados();
 	}
 	
 	/**
-	 * MŽtodo validaCPF
-	 * Verifica se o CPF fornecido Ž v‡lido
+	 * MÃ©todo validaCPF
+	 * Verifica se o CPF fornecido Ã© vÃ¡lido
 	 * Retirado de: http://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097
 	 * @param cpf
 	 * @return
@@ -56,7 +56,7 @@ public class DadosPessoais implements DatabaseObject {
 				(CPF.length() != 11)) 
 			return(false);
 		
-		char dig10, dig11; //D’gitos verificadores
+		char dig10, dig11; //DÃ­gitos verificadores
 		int sm, i, r, num, peso;
 		
 		// "try" - protege o codigo para eventuais erros de conversao de tipo (int) 
@@ -141,7 +141,9 @@ public class DadosPessoais implements DatabaseObject {
 		return this.idDadosPessoais;
 	}
 
-	//Getters
+	/*
+	 * Getters
+	 */
 	
 	public String getNome() {
 		return nome;

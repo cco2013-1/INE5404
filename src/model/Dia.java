@@ -10,7 +10,7 @@ import java.util.List;
  * Classe Dia
  * @author vinicius
  *
- * Representa conjunto de horários de determinado dia, para determinada sala
+ * Representa conjunto de hor√°rios de determinado dia, para determinada sala
  *
  */
 
@@ -21,13 +21,13 @@ public class Dia {
 	
 	/**
 	 * Construtor Dia
-	 * Cria objeto Dia, com horários a partir de horarioInicio,
-	 * cada horario com a duracao especificada, até o horarioFinal.
+	 * Cria objeto Dia, com hor√°rios a partir de horarioInicio,
+	 * cada horario com a duracao especificada, at√© o horarioFinal.
 	 * Deve ser definida a Sala para qual este dia se refere.
-	 * @param horarioInicio Horário de início de atendimento em dada sala
-	 * @param horarioFinal Horário final de atendimento
-	 * @param duracao Duração de cada intervalo
-	 * @param sala Sala para o qual os horários se referem
+	 * @param horarioInicio Hor√°rio de in√≠cio de atendimento em dada sala
+	 * @param horarioFinal Hor√°rio final de atendimento
+	 * @param duracao Dura√ß√£o de cada intervalo
+	 * @param sala Sala para o qual os hor√°rios se referem
 	 */
 	public Dia(Hora horarioInicio, Hora horarioFinal, int duracao, Sala sala){
 		
@@ -53,12 +53,12 @@ public class Dia {
 	}
 	
 	/**
-	 * Método get(hora)
-	 * Retorna Horário de forma que a hora fornecida no construtor é maior ou igual
-	 * à hora de início do horário retornado.
+	 * M√©todo get(hora)
+	 * Retorna Hor√°rio de forma que a hora fornecida no construtor √© maior ou igual
+	 * √† hora de in√≠cio do hor√°rio retornado.
 	 * Ex. Fornecida hora: 15h30.
-	 * Horários contidos na lista de horários do dia: (14h00 - 14h50) (14h50 - 15h40) (15h40 - 16h30)
-	 * Será retornado o segundo horário na lista, ou seja, (14h50 - 15h40) pois 15h30 >= 14h50 
+	 * Hor√°rios contidos na lista de hor√°rios do dia: (14h00 - 14h50) (14h50 - 15h40) (15h40 - 16h30)
+	 * Ser√° retornado o segundo hor√°rio na lista, ou seja, (14h50 - 15h40) pois 15h30 >= 14h50 
 	 * @param h
 	 * @return
 	 */
@@ -76,8 +76,8 @@ public class Dia {
 	}
 	
 	/**
-	 * Método numHorarios
-	 * Retorna o número de horários criados no
+	 * M√©todo numHorarios
+	 * Retorna o n√∫mero de hor√°rios criados no
 	 * objeto Dia
 	 * @return
 	 */

@@ -2,8 +2,8 @@ package model;
 
 /**
  * Classe Horario
- * Representa um intervalo de tempo no qual os pacientes são atendidos em determinada sala
- * Contém lista de pacientes atendidos no determinado horário
+ * Representa um intervalo de tempo no qual os pacientes s√£o atendidos em determinada sala
+ * Cont√©m lista de pacientes atendidos no determinado hor√°rio
  */
 
 import java.util.ArrayList;
@@ -11,12 +11,12 @@ import java.util.List;
 
 public class Horario {
 	//Atributos
-	private Hora inicio; //horário de início da sessão
-	private Hora fim;	//horário do fim da sessão
+	private Hora inicio; //hora de in√≠cio da sess√£o
+	private Hora fim;	//hora do fim da sess√£o
 	private List<Paciente> pacientes;
 	private Sala sala;
 	private Profissional profissional;
-	private String comentarios; //Comentários que podem ser adicionados a determinado horário
+	private String comentarios; //Coment√°rios que podem ser adicionados a determinado hor√°rio
 	//tais como: confirmado, cancelado, etc
 	
 	public Horario(Hora inicio, Hora fim, Sala sala){
@@ -55,7 +55,7 @@ public class Horario {
 	}
 	
 	public void setProfissional(int idProfissional){
-		//TODO: implementar este método
+		//TODO: implementar este m√©todo ou revisar a necessidade deste.
 	}
 
 	public String getComentarios() {

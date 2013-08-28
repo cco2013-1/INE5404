@@ -26,13 +26,13 @@ public class DadosContato implements DatabaseObject {
 		this.telefoneCelular = telefoneCelular;
 		
 		/*
-		 * Valida‹o de email
+		 * ValidaÃ§Ã£o de email
 		 * Ver: http://stackoverflow.com/questions/2762977/regular-expression-for-email-validation-in-java
 		 * e http://commons.apache.org/proper/commons-validator/download_validator.cgi
 		 */
 		if(email.length() > 0 && EmailValidator.getInstance().isValid(email)) this.email = email;
 		else if(email.length() == 0) this.email = email;
-		else throw new IOException("Email inv‡lido");
+		else throw new IOException("Email invï¿½lido");
 		
 		gravarDados();
 	}

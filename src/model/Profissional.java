@@ -28,7 +28,7 @@ public class Profissional extends Pessoa implements DatabaseObject {
 	}
 	
 	/**
-	 * Método fromDb
+	 * M√©todo fromDb
 	 * Gera novo objeto da classe Profissional, baseado em uma consulta
 	 * ao banco de dados.
 	 * @param consultaDb Mapa resultante de consulta ao banco de dados, conforme
@@ -37,19 +37,19 @@ public class Profissional extends Pessoa implements DatabaseObject {
 	 * for encontrado
 	 */
 	public static Profissional fromDb(Map<String, Object> consultaDb){
-		//TODO: implementar este método
+		//TODO: implementar este m√©todo
 		return null;
 	}
 	
 	/**
-	 * Método fromDb
+	 * M√©todo fromDb
 	 * Gera novo objeto da classe Profissional, consultando o banco de dados
-	 * pelo idProfissional passado como argumento ao método.
+	 * pelo idProfissional passado como argumento ao m√©todo.
 	 * @param idProfissional id do Profissional armazenado no banco de dados
 	 * @return Novo objeto Profissional, ou null caso nao seja encontrado
 	 */
 	public static Profissional fromDb(int idProfissional){
-		//TODO: implementar este método
+		//TODO: implementar este m√©todo
 		return null;
 	}
 	
