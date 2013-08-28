@@ -5,10 +5,9 @@ import java.util.Map;
 
 public class Profissional extends Pessoa {
 
-	public Profissional(String nome, int cpf, int telefoneMovel,
-			int telefoneFixo, String nascimento, String email) {
-		super(nome, cpf, telefoneMovel, telefoneFixo, nascimento, email);
-		
+	public Profissional( DadosPessoais dadosPessoais, int telefoneMovel,
+			int telefoneFixo, String email) {
+		super( dadosPessoais, telefoneMovel, telefoneFixo, email);
 	}
 	
 	/**
