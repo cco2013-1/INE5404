@@ -15,6 +15,12 @@ public class Hora extends java.util.GregorianCalendar {
 		super.set(Calendar.MINUTE, minuto);
 	}
 	
+	/**
+	 * Constr—i novo objeto hora, a partir de objeto hora
+	 * fornecido. Aplic‡vel quando se deseja c—pia profunda
+	 * e n‹o c—pia de ponteiro.
+	 * @param h
+	 */
 	public Hora(Hora h){
 		super(TimeZone.getDefault(), new Locale("pt", "BR"));
 		super.set(Calendar.YEAR, h.get(Calendar.YEAR));
@@ -24,8 +30,8 @@ public class Hora extends java.util.GregorianCalendar {
 		super.set(Calendar.MINUTE, h.get(Calendar.MINUTE));
 	}
 
-	public void add(int FIELD, int t){
-		super.add(FIELD, t);
+	public void avancaMinutos(int min){
+		super.add(Calendar.MINUTE, min);
 	}
 	
 	public String toString(){
@@ -35,7 +41,7 @@ public class Hora extends java.util.GregorianCalendar {
 	public static void main(String[] args){
 		Hora h = new Hora(2013, 8, 27, 23, 30);
 		System.out.println(h);
-		h.add(Calendar.MINUTE, 50);
+		h.avancaMinutos(50);
 		System.out.println(h);
 	}
 }

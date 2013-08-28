@@ -24,7 +24,7 @@ public class Dia {
 		Hora inicioAula = new Hora(horarioInicio);
 		Hora fimAula = new Hora(inicioAula);
 		
-		fimAula.add(Calendar.MINUTE, duracao);
+		fimAula.avancaMinutos(duracao);
 		
 		System.out.println("Horario de inicio das aulas: " + inicioAula);
 		System.out.println("Horario fim das aulas: " + fimAula);
