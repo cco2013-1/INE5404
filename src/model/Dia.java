@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -20,14 +21,17 @@ public class Dia {
 	public Dia(Hora horarioInicio, Hora horarioFinal, int duracao, Sala sala){
 		horarios = new ArrayList<Horario>();
 		
-		Hora inicioAula = horarioInicio;
-		Hora fimAula = inicioAula;
+		Hora inicioAula = new Hora(horarioInicio);
+		Hora fimAula = new Hora(inicioAula);
 		
-		fimAula.add(Hora.MINUTE, duracao);
+		fimAula.add(Calendar.MINUTE, duracao);
+		
+		System.out.println("Horario de inicio das aulas: " + inicioAula);
+		System.out.println("Horario fim das aulas: " + fimAula);
 		
 		while(fimAula.getTime().compareTo(horarioFinal.getTime() ) < 0 ){
-			horarios.add(new Horario(inicioAula, fimAula, sala));
-			inicioAula = fimAula;
+			horarios.add(new Horario(new Hora(inicioAula), new Hora(fimAula), sala));
+			inicioAula = new Hora(fimAula);
 			fimAula.add(GregorianCalendar.MINUTE, duracao);
 		}
 	}
@@ -40,22 +44,17 @@ public class Dia {
 		Hora inicio = new Hora(2013, 8, 27, 8, 0);
 		Hora fim = new Hora(2013, 8, 27, 21, 0);
 		
-		System.out.println("Inicio: " + inicio.get(GregorianCalendar.HOUR) + ":" + inicio.get(GregorianCalendar.MINUTE) + "   " + 
-				inicio.get(GregorianCalendar.DAY_OF_MONTH) + "/" + inicio.get(GregorianCalendar.MONTH) + "/" + inicio.get(GregorianCalendar.YEAR) );
-		
 		Sala s = new Sala("Sala 1");
 		
-		Dia d = new Dia(inicio,fim, 50, s);
+		Dia d = new Dia(inicio, fim, 50, s);
 		
 		ArrayList<Horario> h = d.getHorarios();
 		
 		for(int i = 0; i < h.size(); i++){
 			Hora comeco = h.get(i).getInicio();
 			Hora fin = h.get(i).getFim();
-			System.out.println("Inicio: " + comeco.get(GregorianCalendar.HOUR) + ":" + comeco.get(GregorianCalendar.MINUTE) + "   " + 
-					comeco.get(GregorianCalendar.DAY_OF_MONTH) + "/" + comeco.get(GregorianCalendar.MONTH) + "/" + comeco.get(GregorianCalendar.YEAR) );
-			System.out.println("Fim: " + fin.get(GregorianCalendar.HOUR) + ":" + fin.get(GregorianCalendar.MINUTE) + "   " + 
-					fin.get(GregorianCalendar.DAY_OF_MONTH) + "/" + fin.get(GregorianCalendar.MONTH) + "/" + fin.get(GregorianCalendar.YEAR) );
+			System.out.println("Inicio: " + comeco );
+			System.out.println("Fim: " + fin );
 			System.out.println("\n");
 		}
 		
