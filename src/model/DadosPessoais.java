@@ -1,8 +1,6 @@
 package model;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 
@@ -27,7 +25,7 @@ public class DadosPessoais implements DatabaseObject {
 	private Data dataNascimento;
 	private String CPF;
 	private String RG;
-	private int databaseID; //Id atribu’do quando gravado o objeto no banco de dados.
+	private int idDadosPessoais; //Id atribu’do quando gravado o objeto no banco de dados.
 	
 	public DadosPessoais(String nome, Data dataNascimento, String CPF, String RG) throws IOException{
 		this.nome = nome;
@@ -121,6 +119,8 @@ public class DadosPessoais implements DatabaseObject {
 	
 	/**
 	 * Grava os dados no banco de dados e 
+	 * grava valor do id do objeto gravado
+	 * no atribuo idDadosPessoais
 	 * @return
 	 */
 	private void gravarDados() {
@@ -133,12 +133,12 @@ public class DadosPessoais implements DatabaseObject {
 		
 		Database db = new SQLDatabase();
 		
-		this.databaseID = db.gravar(DadosPessoais.TABELA, dados);
+		this.idDadosPessoais = db.gravar(DadosPessoais.TABELA, dados);
 	}
 	
 	@Override
 	public int getID(){
-		return this.databaseID;
+		return this.idDadosPessoais;
 	}
 
 	//Getters
