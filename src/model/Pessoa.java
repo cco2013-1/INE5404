@@ -12,11 +12,11 @@ package model;
 public abstract class Pessoa {
 	
 	//Atributos
-	DadosPessoais dadosPessoais;
-	DadosContato dadosContato;
+	private DadosPessoais dadosPessoais;
+	private DadosContato dadosContato;
 
 	//Construtor
-	public Pessoa (DadosPessoais dadosPesoais, DadosContato dadosContato) {
+	public Pessoa (DadosPessoais dadosPessoais, DadosContato dadosContato) {
 		this.dadosPessoais = dadosPessoais;
 		this.dadosContato = dadosContato;
 	}
