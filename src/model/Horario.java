@@ -15,6 +15,9 @@ public class Horario {
 	private Hora fim;	//horário do fim da sessão
 	private List<Paciente> pacientes;
 	private Sala sala;
+	private Profissional profissional;
+	private String comentarios; //Comentários que podem ser adicionados a determinado horário
+	//tais como: confirmado, cancelado, etc
 	
 	public Horario(Hora inicio, Hora fim, Sala sala){
 		this.inicio = inicio;
@@ -41,5 +44,25 @@ public class Horario {
 	
 	public Sala getSala(){
 		return sala;
+	}
+
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+	
+	public void setProfissional(int idProfissional){
+		//TODO: implementar este método
+	}
+
+	public String getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(String comentarios) {
+		this.comentarios = comentarios;
 	}
 }
