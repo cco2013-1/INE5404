@@ -22,8 +22,8 @@ public abstract class Pessoa {
 	}
 	
 	/**
-	 * M√©todo toString
-	 * Fornece representa√ß√£o do objeto em forma de 
+	 * Método toString
+	 * Fornece representação do objeto em forma de 
 	 * string
 	 */
 	@Override
