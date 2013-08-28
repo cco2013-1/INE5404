@@ -15,8 +15,14 @@ public class Data extends GregorianCalendar {
 		super(ano, mes, diaDoMes);
 	}
 	
-	@Override
-	public String toString(){
+	/**
+	 * MŽtodo toStringDB
+	 * Retorna uma data formatada conforme ISO8601.
+	 * "YYYY-MM-DD"
+	 * Ex: "2013-08-28"
+	 * Ver: http://pt.wikipedia.org/wiki/ISO_8601
+	 */
+	public String toStringDB(){
 		String ano = "" + this.get(Calendar.YEAR);
 		String mes = "" + this.get(Calendar.MONTH);
 		mes = (mes.length() == 1) ? "0" + mes : mes;
@@ -24,5 +30,15 @@ public class Data extends GregorianCalendar {
 		dia = (dia.length() == 1) ? "0" + dia : dia;
 		
 		return ano + "-" + mes + "-" + dia;
+	}
+	
+	public String toString(){
+		String ano = "" + this.get(Calendar.YEAR);
+		String mes = "" + this.get(Calendar.MONTH);
+		mes = (mes.length() == 1) ? "0" + mes : mes;
+		String dia = "" + this.get(Calendar.DAY_OF_MONTH);
+		dia = (dia.length() == 1) ? "0" + dia : dia;
+		
+		return dia + "/" + mes + "/" + ano;
 	}
 }
