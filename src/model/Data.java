@@ -32,6 +32,10 @@ public class Data extends GregorianCalendar {
 		return ano + "-" + mes + "-" + dia;
 	}
 	
+	/**
+	 * MŽtodo toString
+	 * Retorna a data formatada como "DD/MM/YYYY"
+	 */
 	public String toString(){
 		String ano = "" + this.get(Calendar.YEAR);
 		String mes = "" + this.get(Calendar.MONTH);
