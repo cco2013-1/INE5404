@@ -13,16 +13,12 @@ public abstract class Pessoa {
 	
 	//Atributos
 	DadosPessoais dadosPessoais;
-	private int telefoneMovel;
-	private int telefoneFixo;
-	private String email;
+	DadosContato dadosContato;
 
 	//Construtor
-	public Pessoa (DadosPessoais dadosPesoais, int telefoneMovel, int telefoneFixo, String email) {
+	public Pessoa (DadosPessoais dadosPesoais, DadosContato dadosContato) {
 		this.dadosPessoais = dadosPessoais;
-		this.telefoneMovel=telefoneMovel;
-		this.telefoneFixo=telefoneFixo;
-		this.email=email;
+		this.dadosContato = dadosContato;
 	}
 	
 	/**
@@ -35,33 +31,9 @@ public abstract class Pessoa {
 		String mensagem = "Nome: "+this.dadosPessoais.getNome()+
 				"\n"+"CPF: "+ this.dadosPessoais.getCPF()+
 				"\n"+"Data de Nascimento: "+ this.dadosPessoais.getDataNascimento() +
-				"\n"+"Telefone Celular: "+this.telefoneMovel+" Telefone Fixo: "+this.telefoneFixo+
-				"\n"+"E-mail: "+this.email;
+				"\n"+"Telefone Celular: "+this.dadosContato.getTelefoneCelular() + 
+				" Telefone Fixo: "+this.dadosContato.getTelefoneFixo()+
+				"\n"+"Email: "+this.dadosContato.getEmail();
 		return mensagem;
 	}
-	
-	public int getTelefoneMovel() {
-		return this.telefoneMovel;
-	}
-	
-	public void setTelefoneMovel(int telefoneMovel) {
-		this.telefoneMovel = telefoneMovel;
-	}
-	
-	public int getTelefoneFixo() {
-		return this.telefoneFixo;
-	}
-	
-	public void setTelefoneFixo(int telefoneFixo) {
-		this.telefoneFixo = telefoneFixo;
-	}
-	
-	public String getEmail() {
-		return this.email;
-	}
-	
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 }

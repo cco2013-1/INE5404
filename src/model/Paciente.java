@@ -14,10 +14,9 @@ public class Paciente extends Pessoa {
 	private String tratamento;
 	private Profissional profissional;
 	
-	public Paciente(DadosPessoais dadosPessoais, int telefoneMovel,
-			int telefoneFixo, String email, String tratamento, 
+	public Paciente(DadosPessoais dadosPessoais, DadosContato dadosContato, String tratamento, 
 			Profissional profissional) {
-		super(dadosPessoais, telefoneMovel, telefoneFixo, email);
+		super(dadosPessoais, dadosContato);
 		this.tratamento = tratamento;
 		this.profissional = profissional;
 	}
