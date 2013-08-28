@@ -17,13 +17,13 @@ public class Dia {
 	//Atributos
 	private ArrayList<Horario> horarios; //Lista dos hor‡rios
 	
-	public Dia(GregorianCalendar horarioInicio, GregorianCalendar horarioFinal, int duracao, Sala sala){
+	public Dia(Hora horarioInicio, Hora horarioFinal, int duracao, Sala sala){
 		horarios = new ArrayList<Horario>();
 		
-		GregorianCalendar inicioAula = horarioInicio;
-		GregorianCalendar fimAula = inicioAula;
+		Hora inicioAula = horarioInicio;
+		Hora fimAula = inicioAula;
 		
-		fimAula.add(GregorianCalendar.MINUTE, duracao);
+		fimAula.add(Hora.MINUTE, duracao);
 		
 		while(fimAula.getTime().compareTo(horarioFinal.getTime() ) < 0 ){
 			horarios.add(new Horario(inicioAula, fimAula, sala));
@@ -37,8 +37,8 @@ public class Dia {
 	}
 	
 	public static void main(String[] args){
-		GregorianCalendar inicio = new GregorianCalendar(2013, 8, 27, 8, 0);
-		GregorianCalendar fim = new GregorianCalendar(2013, 8, 27, 21, 0);
+		Hora inicio = new Hora(2013, 8, 27, 8, 0);
+		Hora fim = new Hora(2013, 8, 27, 21, 0);
 		
 		System.out.println("Inicio: " + inicio.get(GregorianCalendar.HOUR) + ":" + inicio.get(GregorianCalendar.MINUTE) + "   " + 
 				inicio.get(GregorianCalendar.DAY_OF_MONTH) + "/" + inicio.get(GregorianCalendar.MONTH) + "/" + inicio.get(GregorianCalendar.YEAR) );
@@ -50,8 +50,8 @@ public class Dia {
 		ArrayList<Horario> h = d.getHorarios();
 		
 		for(int i = 0; i < h.size(); i++){
-			GregorianCalendar comeco = h.get(i).getInicio();
-			GregorianCalendar fin = h.get(i).getFim();
+			Hora comeco = h.get(i).getInicio();
+			Hora fin = h.get(i).getFim();
 			System.out.println("Inicio: " + comeco.get(GregorianCalendar.HOUR) + ":" + comeco.get(GregorianCalendar.MINUTE) + "   " + 
 					comeco.get(GregorianCalendar.DAY_OF_MONTH) + "/" + comeco.get(GregorianCalendar.MONTH) + "/" + comeco.get(GregorianCalendar.YEAR) );
 			System.out.println("Fim: " + fin.get(GregorianCalendar.HOUR) + ":" + fin.get(GregorianCalendar.MINUTE) + "   " + 

@@ -8,16 +8,15 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.GregorianCalendar;
 
 public class Horario {
 	//Atributos
-	private GregorianCalendar inicio; //hor‡rio de in’cio da sess‹o
-	private GregorianCalendar fim;	//hor‡rio do fim da sess‹o
+	private Hora inicio; //hor‡rio de in’cio da sess‹o
+	private Hora fim;	//hor‡rio do fim da sess‹o
 	private List<Paciente> pacientes;
 	private Sala sala;
 	
-	public Horario(GregorianCalendar inicio, GregorianCalendar fim, Sala sala){
+	public Horario(Hora inicio, Hora fim, Sala sala){
 		this.inicio = inicio;
 		this.fim = fim;
 		this.sala = sala;
@@ -32,11 +31,11 @@ public class Horario {
 		pacientes.add(p);
 	}
 
-	public GregorianCalendar getInicio() {
+	public Hora getInicio() {
 		return inicio;
 	}
 
-	public GregorianCalendar getFim() {
+	public Hora getFim() {
 		return fim;
 	}
 	
