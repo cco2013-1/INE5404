@@ -1,5 +1,5 @@
 package model;
-
+import java.util.HashMap;
 /**
  * Classe Paciente
  * @author Matheus Ben-Hur
@@ -10,31 +10,39 @@ package model;
  *
  */
 
-public class Paciente extends Pessoa {
-	private String tratamento;
-	private Profissional profissional;
+public class Paciente extends Pessoa implements DatabaseObject {
+/*
+ * constantes
+ */
+	public static final String TABELA = "paciente";
+	public static final String[] COLUNAS = {"id_tratamento","id_profissional"};
+/*
+ * atributos	
+ */
+	private int idDadosPessoais;
+	private int idDadosContato;
+	private int idPaciente;
 	
-	public Paciente(DadosPessoais dadosPessoais, DadosContato dadosContato, String tratamento, 
-			Profissional profissional) {
+	public Paciente(DadosPessoais dadosPessoais, DadosContato dadosContato){
 		super(dadosPessoais, dadosContato);
-		this.tratamento = tratamento;
-		this.profissional = profissional;
+		this.idDadosPessoais=dadosPessoais.getID();
+		this.idDadosContato=dadosContato.getID();
+		this.gravarDados();
 	}
-
-	public String getTratamento() {
-		return tratamento;
+	public void gravarDados(){
+		HashMap<String, Object> dados = new HashMap<String, Object>();
+		dados.put(COLUNAS[0], this.idDadosPessoais);
+		dados.put(COLUNAS[1], this.idDadosContato);
+		
+		Database db = new SQLDatabase();
+		this.idPaciente = db.gravar(Paciente.TABELA,dados);
 	}
-
-	public void setTratamento(String tratamento) {
-		this.tratamento = tratamento;
+	@Override
+	public int getID() {
+		
+		return this.idPaciente;
+		
 	}
-
-	public Profissional getProfissional() {
-		return profissional;
-	}
-
-	public void setProfissional(Profissional profissional) {
-		this.profissional = profissional;
-	}
+ 
 	
 }
