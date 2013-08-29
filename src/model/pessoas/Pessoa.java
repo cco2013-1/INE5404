@@ -1,4 +1,4 @@
-package model;
+package model.pessoas;
 /**
  * Class Pessoa
  * @author Matheus Ben-Hur

@@ -1,4 +1,4 @@
-package model;
+package model.negocio;
 
 public class Sala {
 	

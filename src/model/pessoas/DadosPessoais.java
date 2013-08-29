@@ -1,8 +1,13 @@
-package model;
+package model.pessoas;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.InputMismatchException;
+
+import model.auxiliar.Data;
+import model.bancoDeDados.Database;
+import model.bancoDeDados.DatabaseObject;
+import model.bancoDeDados.SQLDatabase;
 
 /**
  * Classe DadosPessoais

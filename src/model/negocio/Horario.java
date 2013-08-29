@@ -1,4 +1,4 @@
-package model;
+package model.negocio;
 
 /**
  * Classe Horario
@@ -8,6 +8,10 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import model.auxiliar.Hora;
+import model.pessoas.Paciente;
+import model.pessoas.Profissional;
 
 public class Horario {
 	//Atributos

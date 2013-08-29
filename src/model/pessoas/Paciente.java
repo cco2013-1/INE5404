@@ -1,4 +1,4 @@
-package model;
+package model.pessoas;
 
 /**
  * Classe Paciente

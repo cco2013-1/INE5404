@@ -1,8 +1,12 @@
-package model;
+package model.pessoas;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import model.bancoDeDados.Database;
+import model.bancoDeDados.DatabaseObject;
+import model.bancoDeDados.SQLDatabase;
 
 public class Profissional extends Pessoa implements DatabaseObject {
 	
