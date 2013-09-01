@@ -36,7 +36,7 @@ public class DadosContato implements DatabaseObject {
 		 */
 		if(email.length() > 0 && EmailValidator.getInstance().isValid(email)) this.email = email;
 		else if(email.length() == 0) this.email = email;
-		else throw new IOException("Email inv�lido");
+		else throw new IOException("Email inválido");
 		
 		gravarDados();
 	}
