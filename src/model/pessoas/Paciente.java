@@ -1,6 +1,10 @@
 package model.pessoas;
 
 import java.util.HashMap;
+
+import model.bancoDeDados.Database;
+import model.bancoDeDados.DatabaseObject;
+import model.bancoDeDados.SQLDatabase;
 /**
  * Classe Paciente
  * @author Matheus Ben-Hur
