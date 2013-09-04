@@ -35,8 +35,10 @@ public class DadosPessoais implements DatabaseObject {
 	public DadosPessoais(String nome, Data dataNascimento, String CPF, String RG) throws IOException{
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
-		if(this.validaCPF(CPF)) this.CPF = formataCPF(CPF);
-		else throw new IOException("CPF inv�lido");
+		if(this.validaCPF(CPF)) this.CPF = limparCPF(CPF);
+		else{
+			throw new IOException("CPF inválido");
+		}
 		this.RG = RG;
 		this.gravarDados();
 	}
@@ -50,7 +52,7 @@ public class DadosPessoais implements DatabaseObject {
 	 */
 	private boolean validaCPF(String CPF){
 		
-		CPF = formataCPF(CPF);
+		CPF = limparCPF(CPF);
 		
 		// considera-se erro CPF's formados por uma sequencia de numeros iguais
 		if (	CPF.equals("00000000000") || CPF.equals("11111111111") || 
@@ -111,14 +113,32 @@ public class DadosPessoais implements DatabaseObject {
 		}
 	}
 	
-	
-	private String formataCPF(String CPF){
+	/**
+	 * Método limpa CPF
+	 * Remove '.' e '-' do CPF, caso haja.
+	 * @param CPF
+	 * @return
+	 */
+	private static String limparCPF(String CPF){
 		while ( CPF.contains(".") )
 			CPF = CPF.substring(0, CPF.indexOf(".")) + CPF.substring(CPF.indexOf(".") + 1);
 		
 		while ( CPF.contains("-") )
 			CPF = CPF.substring(0, CPF.indexOf("-")) + CPF.substring(CPF.indexOf("-") + 1);
 		
+		return CPF;
+	}
+	
+	/**
+	 * Método obterCPFformatado
+	 * retorna um string contendo o cpf,
+	 * formatado da seguinte maneira: "xxx.xxx.xxx-xx"
+	 * @return
+	 */
+	public String obterCPFformatado(){
+		String CPF = this.CPF;
+		CPF = CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." + 
+				CPF.substring(6,9) + "-" + CPF.substring(9);
 		return CPF;
 	}
 	
