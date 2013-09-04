@@ -12,8 +12,8 @@ package model.pessoas;
 public abstract class Pessoa {
 	
 	//Atributos
-	private DadosPessoais dadosPessoais;
-	private DadosContato dadosContato;
+	protected DadosPessoais dadosPessoais;
+	protected DadosContato dadosContato;
 
 	//Construtor
 	public Pessoa (DadosPessoais dadosPessoais, DadosContato dadosContato) {
