@@ -1,18 +1,23 @@
 package model.negocio;
+import java.util.HashMap;
 import java.util.List;
+
+import model.bancoDeDados.Database;
+import model.bancoDeDados.SQLDatabase;
 
 public class Especialidade {
 	
 	//Constantes
 	private static final String TABELA = "especialidades";
+	private static final String[] COLUNAS = {"id_tratamento"}; 
 	
 	
 	//Atributos
 	private List<Tratamento> tratamento;
-	
+	private int idEspecialidade;
 
 	public Especialidade(List<Tratamento> tratamento) {
-
+		this.tratamento = tratamento;
 		
 	}
 
@@ -20,5 +25,17 @@ public class Especialidade {
 		return tratamento;
 	}
 	
+	public void gravarDados(){
+		HashMap<String,Object> dados = new HashMap<String, Object>();
+		
+		for(int i=0; i<tratamento.size();i++){
+			dados.put(COLUNAS[0], this.tratamento.get(i).getID());
+		}
+		Database db = new SQLDatabase();
+		this.idEspecialidade = db.gravar(Especialidade.TABELA,dados);
+	}
+	public int getID(){
+		return this.idEspecialidade;
+	}
 
 }
