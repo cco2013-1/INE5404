@@ -1,4 +1,4 @@
-package model;
+package model.negocio;
 
 public class Sala {
 	
@@ -16,4 +16,5 @@ public class Sala {
 	public int getID(){
 		return this.idSala;
 	}
+	
 }

@@ -1,4 +1,4 @@
-package model;
+package model.bancoDeDados;
 
 import java.util.List;
 import java.util.Map;

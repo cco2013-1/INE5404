@@ -1,4 +1,4 @@
-package model;
+package model.pessoas;
 /**
  * Class Pessoa
  * @author Matheus Ben-Hur
@@ -12,8 +12,8 @@ package model;
 public abstract class Pessoa {
 	
 	//Atributos
-	private DadosPessoais dadosPessoais;
-	private DadosContato dadosContato;
+	protected DadosPessoais dadosPessoais;
+	protected DadosContato dadosContato;
 
 	//Construtor
 	public Pessoa (DadosPessoais dadosPessoais, DadosContato dadosContato) {

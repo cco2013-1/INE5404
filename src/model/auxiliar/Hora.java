@@ -1,4 +1,4 @@
-package model;
+package model.auxiliar;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -36,14 +36,11 @@ public class Hora extends java.util.GregorianCalendar {
 	}
 	
 	public String toString(){
-		return "" + this.get(Calendar.HOUR_OF_DAY) + ":" + this.get(Calendar.MINUTE);
-	}
-	
-	public static void main(String[] args){
-		Hora h = new Hora(2013, 8, 27, 23, 30);
-		System.out.println(h);
-		h.avancaMinutos(50);
-		System.out.println(h);
+		String hora = "" + this.get(Calendar.HOUR_OF_DAY);
+		hora = (hora.length() == 1) ? hora = "0" + hora : hora;
+		String minutos = "" + this.get(Calendar.MINUTE);
+		minutos = (minutos.length() == 1) ? "0" + minutos : minutos;
+		return hora + ":" + minutos;
 	}
 	/**
 	 * Método toStringDB

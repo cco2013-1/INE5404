@@ -1,10 +1,12 @@
-package model;
+package model.negocio;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+import model.auxiliar.Hora;
 
 /**
  * Classe Dia
@@ -62,7 +64,6 @@ public class Dia {
 	 * @param h
 	 * @return
 	 */
-	
 	public Horario get(Hora h){
 		Horario hor = null;
 		
@@ -85,5 +86,4 @@ public class Dia {
 	public int numHorarios(){
 		return this.horarios.size();
 	}
-	
 }

@@ -1,4 +1,4 @@
-package model;
+package model.auxiliar;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

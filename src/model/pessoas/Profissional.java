@@ -1,6 +1,11 @@
-package model;
+package model.pessoas;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import model.bancoDeDados.Database;
+import model.bancoDeDados.DatabaseObject;
+import model.bancoDeDados.SQLDatabase;
 
 public class Profissional extends Pessoa implements DatabaseObject {
 	
@@ -15,13 +20,10 @@ public class Profissional extends Pessoa implements DatabaseObject {
 	 * Atributos
 	 */
 	private int idProfissional; //Id do profissional, conforme gravado no banco de dados.
-	private int idDadosPessoais; //Id dos dados pessoais gravados.
-	private int idDadosContato;
+
 
 	public Profissional( DadosPessoais dadosPessoais, DadosContato dadosContato) {
 		super( dadosPessoais, dadosContato);
-		this.idDadosPessoais = dadosPessoais.getID();
-		this.idDadosContato = dadosContato.getID();
 		this.gravarDados();
 	}
 	
@@ -54,8 +56,8 @@ public class Profissional extends Pessoa implements DatabaseObject {
 	private void gravarDados(){
 		HashMap<String, Object> dados = new HashMap<String, Object>();
 		
-		dados.put(COLUNAS[0], this.idDadosPessoais);
-		dados.put(COLUNAS[1], this.idDadosContato);
+		dados.put(COLUNAS[0], this.dadosPessoais.getID());
+		dados.put(COLUNAS[1], this.dadosContato.getID());
 		
 		Database db = new SQLDatabase();
 		

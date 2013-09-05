@@ -1,4 +1,4 @@
-package model;
+package model.negocio;
 
 /**
  * Classe Horario
@@ -10,12 +10,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import model.bancoDeDados.Database;
+import model.negocio.Horario;
+import model.bancoDeDados.SQLDatabase;
+import model.auxiliar.Hora;
+import model.pessoas.Paciente;
+import model.pessoas.Profissional;
+
 public class Horario {
 	//Constantes
-	private static final String TABELA_H = "horarios";
-	private static final String TABELA_PH = "pacientes_horarios";
-	private static final String[] COLUNAS_H = {"id_profissional","horario_inicio","horario_fim","id_sala","comentarios"};
-	private static final String[] COLUNAS_PH= {"id_paciente","id_horario"};
+		private static final String TABELA_H = "horarios";
+		private static final String TABELA_PH = "pacientes_horarios";
+		private static final String[] COLUNAS_H = {"id_profissional","horario_inicio","horario_fim","id_sala","comentarios"};
+		private static final String[] COLUNAS_PH= {"id_paciente","id_horario"};
 	
 	//Atributos
 	private Hora inicio; //hora de início da sessão
@@ -96,6 +103,4 @@ public class Horario {
 		}
 		dados1.put(COLUNAS_PH[this.pacientes.size()+1], this.idHorario);
 	}
-	
 }
-
