@@ -62,6 +62,7 @@ public class Dia {
 	 * @param h
 	 * @return
 	 */
+	
 	public Horario get(Hora h){
 		Horario hor = null;
 		
@@ -85,21 +86,4 @@ public class Dia {
 		return this.horarios.size();
 	}
 	
-	public static void main(String[] args){
-		Hora inicio = new Hora(2013, 8, 27, 8, 0);
-		Hora fim = new Hora(2013, 8, 27, 21, 0);
-		
-		Sala s = new Sala("Sala 1");
-		
-		Dia d = new Dia(inicio, fim, 50, s);
-		
-		for(int i = 0; i < d.numHorarios(); i++){
-			Hora comeco = d.get(i).getInicio();
-			Hora fin = d.get(i).getFim();
-			System.out.println("Inicio: " + comeco );
-			System.out.println("Fim: " + fin );
-			System.out.println("\n");
-		}
-		
-	}
 }

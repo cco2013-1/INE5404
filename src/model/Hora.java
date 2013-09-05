@@ -45,4 +45,24 @@ public class Hora extends java.util.GregorianCalendar {
 		h.avancaMinutos(50);
 		System.out.println(h);
 	}
+	/**
+	 * Método toStringDB
+	 * Retorna uma data e horário formatada conforme ISO8601.
+	 * "YYYY-MM-DDTHH:MM"
+	 * Ex: "2013-08-28T20:10"
+	 * Ver: http://pt.wikipedia.org/wiki/ISO_8601
+	 */
+	public String toStringDB(){
+		String ano = "" + this.get(Calendar.YEAR);
+		String mes = "" + this.get(Calendar.MONTH);
+		mes = (mes.length() == 1) ? "0" + mes : mes;
+		String dia = "" + this.get(Calendar.DAY_OF_MONTH);
+		dia = (dia.length() == 1) ? "0" + dia : dia;
+		String hora = ""+this.get(Calendar.HOUR);
+		hora = (hora.length()==1) ? "0" + hora : hora;
+		String minutos = ""+this.get(Calendar.MINUTE);
+		minutos = (minutos.length()==1) ? "0"+ minutos : minutos;
+		
+		return ano + "-" + mes + "-" + dia+"T"+hora+":"+minutos;
+	}
 }

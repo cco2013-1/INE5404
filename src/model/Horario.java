@@ -7,9 +7,16 @@ package model;
  */
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Horario {
+	//Constantes
+	private static final String TABELA_H = "horarios";
+	private static final String TABELA_PH = "pacientes_horarios";
+	private static final String[] COLUNAS_H = {"id_profissional","horario_inicio","horario_fim","id_sala","comentarios"};
+	private static final String[] COLUNAS_PH= {"id_paciente","id_horario"};
+	
 	//Atributos
 	private Hora inicio; //hora de início da sessão
 	private Hora fim;	//hora do fim da sessão
@@ -18,6 +25,7 @@ public class Horario {
 	private Profissional profissional;
 	private String comentarios; //Comentários que podem ser adicionados a determinado horário
 	//tais como: confirmado, cancelado, etc
+	private int idHorario;
 	
 	public Horario(Hora inicio, Hora fim, Sala sala){
 		this.inicio = inicio;
@@ -65,4 +73,29 @@ public class Horario {
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
 	}
+	public int getID(){
+		return this.idHorario;
+	}
+	private void gravarDados(){
+		HashMap<String, Object> dados = new HashMap<String, Object>();
+		
+		dados.put(COLUNAS_H[0],  this.profissional.getID());
+		dados.put(COLUNAS_H[1], this.inicio.toStringDB());
+		dados.put(COLUNAS_H[2], this.fim.toStringDB());
+		dados.put(COLUNAS_H[3], this.sala.getID());
+		dados.put(COLUNAS_H[4], this.comentarios);
+		
+		Database db = new SQLDatabase();
+		this.idHorario = db.gravar(Horario.TABELA_H,dados);
+	}
+	private void gravarDados1(){
+		HashMap<String, Object> dados1 = new HashMap<String, Object>();
+		
+		for(int i=1; i<this.pacientes.size();i++){
+			dados1.put(COLUNAS_PH[i], this.pacientes.get(i).getID());
+		}
+		dados1.put(COLUNAS_PH[this.pacientes.size()+1], this.idHorario);
+	}
+	
 }
+
