@@ -21,7 +21,7 @@ public class Horario {
 	//Constantes
 		private static final String TABELA_H = "horarios";
 		private static final String TABELA_PH = "pacientes_horarios";
-		private static final String[] COLUNAS_H = {"id_profissional","horario_inicio","horario_fim","id_sala","comentarios"};
+		private static final String[] COLUNAS_H = {"id_profissional","horario_inicio","horario_fim","id_sala","comentarios","id_tratamento"};
 		private static final String[] COLUNAS_PH= {"id_paciente","id_horario"};
 	
 	//Atributos
@@ -29,10 +29,12 @@ public class Horario {
 	private Hora fim;	//hora do fim da sessão
 	private List<Paciente> pacientes;
 	private Sala sala;
+	private Tratamento tratamento;
 	private Profissional profissional;
 	private String comentarios; //Comentários que podem ser adicionados a determinado horário
 	//tais como: confirmado, cancelado, etc
 	private int idHorario;
+	
 	
 	public Horario(Hora inicio, Hora fim, Sala sala){
 		this.inicio = inicio;
@@ -68,10 +70,6 @@ public class Horario {
 	public void setProfissional(Profissional profissional) {
 		this.profissional = profissional;
 	}
-	
-	public void setProfissional(int idProfissional){
-		//TODO: implementar este método ou revisar a necessidade deste.
-	}
 
 	public String getComentarios() {
 		return comentarios;
@@ -80,9 +78,16 @@ public class Horario {
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
 	}
+	public Tratamento getTratamento(){
+		return this.tratamento;
+	}
+	public void setTratamento(Tratamento tratamento){
+		this.tratamento=tratamento;
+	}
 	public int getID(){
 		return this.idHorario;
 	}
+	
 	private void gravarDados(){
 		HashMap<String, Object> dados = new HashMap<String, Object>();
 		
@@ -91,7 +96,8 @@ public class Horario {
 		dados.put(COLUNAS_H[2], this.fim.toStringDB());
 		dados.put(COLUNAS_H[3], this.sala.getID());
 		dados.put(COLUNAS_H[4], this.comentarios);
-		
+		dados.put(COLUNAS_H[5], this.tratamento.getID());
+	
 		Database db = new SQLDatabase();
 		this.idHorario = db.gravar(Horario.TABELA_H,dados);
 	}
@@ -102,5 +108,8 @@ public class Horario {
 			dados1.put(COLUNAS_PH[i], this.pacientes.get(i).getID());
 		}
 		dados1.put(COLUNAS_PH[this.pacientes.size()+1], this.idHorario);
+		Database db = new SQLDatabase();
+		db.gravar(Horario.TABELA_PH,dados1);
 	}
+		
 }
