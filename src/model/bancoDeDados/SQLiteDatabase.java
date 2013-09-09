@@ -1,7 +1,6 @@
 package model.bancoDeDados;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.sql.Connection;
@@ -10,10 +9,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.sqlite.SQLiteConfig;
+
+
+/**
+ * Classe SQLiteDatabase
+ * Implementa a interface Database utilizando SQLite.
+ * É utilizado o seguinte JDBC: 
+ * https://bitbucket.org/xerial/sqlite-jdbc/
+ * @author vinicius
+ *
+ */
 public class SQLiteDatabase implements Database {
 
-    private static final String NOME_BANCO_DE_DADOS = "/Users/vinicius/"
-            + "Dropbox/ComputerScience/workspace/INE5404/topphysio.db";
+    private static final String NOME_BANCO_DE_DADOS = "topphysio.db";
 
     private Connection con;
 
@@ -30,8 +39,16 @@ public class SQLiteDatabase implements Database {
         this.con = null;
 
         try {
+            /*
+             * Garantir que foreign_keys estao habilitadas
+             * Fonte:
+             * http://code-know-how.blogspot.ru/2011/10/how-to-enable-foreign-keys-in-sqlite3.html
+             */
+            SQLiteConfig config = new SQLiteConfig();
+            config.enforceForeignKeys(true);
+
             con = DriverManager.getConnection("jdbc:sqlite:"
-                    + NOME_BANCO_DE_DADOS);
+                    + NOME_BANCO_DE_DADOS, config.toProperties());
         }
         catch (SQLException e) {
             System.out.println("Falha ao abrir banco de dados.");
@@ -40,9 +57,8 @@ public class SQLiteDatabase implements Database {
 
     @Override
     public int gravar(String tabela, Map<String, Object> dados) {
-        // TODO Auto-generated method stub
 
-        String sqlStatement = "INSERT INTO " + tabela + " (";
+        String sql = "INSERT INTO " + tabela + " (";
 
         ArrayList<String> colunas = new ArrayList<String>();
         ArrayList<Object> valores = new ArrayList<Object>();
@@ -53,26 +69,26 @@ public class SQLiteDatabase implements Database {
         }
 
         /*
-         * Loop para incluir os nomes das colunas na string sqlStatement
+         * Loop para incluir os nomes das colunas na string sql
          */
         for (int i = 0; i < colunas.size() - 1; i++) {
-            sqlStatement += colunas.get(i) + ", ";
+            sql += colunas.get(i) + ", ";
         }
-        sqlStatement += colunas.get(colunas.size() - 1);
+        sql += colunas.get(colunas.size() - 1);
 
-        sqlStatement += ") VALUES (";
+        sql += ") VALUES (";
 
         /*
          * Loop para incluir os valores associados as colunas na string
-         * sqlStatement
+         * sql
          */
         for (int i = 0; i < valores.size() - 1; i++) {
-            sqlStatement += "\"" + valores.get(i).toString() + "\", ";
+            sql += "\"" + valores.get(i).toString() + "\", ";
         }
-        sqlStatement += "\"" + valores.get(valores.size() - 1).toString()
+        sql += "\"" + valores.get(valores.size() - 1).toString()
                 + "\"";
 
-        sqlStatement += ")";
+        sql += ")";
 
         /*
          * Executar o comando SQL
@@ -81,7 +97,7 @@ public class SQLiteDatabase implements Database {
         try {
             st = con.createStatement();
             st.setQueryTimeout(30); // 30 segundos para timeout
-            st.executeUpdate(sqlStatement);
+            st.executeUpdate(sql);
             ResultSet rs = st.executeQuery("SELECT last_insert_rowid()");
             
             while(rs.next()){
