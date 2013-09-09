@@ -21,7 +21,7 @@ import model.pessoas.Profissional;
 
 public class Horario implements DatabaseObject {
 	//Constantes
-		private static final String TABELA = "horarios";
+		private static final String TABELA = "horario";
 		private static final String TABELA_PH = "pacientes_horarios";
 		private static final String[] COLUNAS = { "horario_inicio", "horario_fim", 
 			"id_profissional", "id_tratamento", "id_sala", "comentarios" };
