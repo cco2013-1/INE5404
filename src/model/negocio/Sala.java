@@ -1,6 +1,8 @@
 package model.negocio;
 
-public class Sala {
+import model.bancoDeDados.DatabaseObject;
+
+public class Sala implements DatabaseObject {
 	
 	//Atributos
 	private String nome;
