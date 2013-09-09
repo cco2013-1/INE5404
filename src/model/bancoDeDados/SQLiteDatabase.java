@@ -11,14 +11,12 @@ import java.sql.Statement;
 
 import org.sqlite.SQLiteConfig;
 
-
 /**
- * Classe SQLiteDatabase
- * Implementa a interface Database utilizando SQLite.
- * É utilizado o seguinte JDBC: 
- * https://bitbucket.org/xerial/sqlite-jdbc/
+ * Classe SQLiteDatabase Implementa a interface Database utilizando SQLite. É
+ * utilizado o seguinte JDBC: https://bitbucket.org/xerial/sqlite-jdbc/
+ * 
  * @author vinicius
- *
+ * 
  */
 public class SQLiteDatabase implements Database {
 
@@ -27,7 +25,7 @@ public class SQLiteDatabase implements Database {
     private Connection con;
 
     public SQLiteDatabase() {
-        
+
         try {
             Class.forName("org.sqlite.JDBC");
         }
@@ -35,14 +33,15 @@ public class SQLiteDatabase implements Database {
             System.out.println("biblioteca JDBC sqlite nao encontrada");
             e1.printStackTrace();
         }
-        
+
         this.con = null;
 
         try {
             /*
-             * Garantir que foreign_keys estao habilitadas
-             * Fonte:
-             * http://code-know-how.blogspot.ru/2011/10/how-to-enable-foreign-keys-in-sqlite3.html
+             * Garantir que foreign_keys estao habilitadas Fonte:
+             * http://code-know
+             * -how.blogspot.ru/2011/10/how-to-enable-foreign-keys
+             * -in-sqlite3.html
              */
             SQLiteConfig config = new SQLiteConfig();
             config.enforceForeignKeys(true);
@@ -79,14 +78,12 @@ public class SQLiteDatabase implements Database {
         sql += ") VALUES (";
 
         /*
-         * Loop para incluir os valores associados as colunas na string
-         * sql
+         * Loop para incluir os valores associados as colunas na string sql
          */
         for (int i = 0; i < valores.size() - 1; i++) {
             sql += "\"" + valores.get(i).toString() + "\", ";
         }
-        sql += "\"" + valores.get(valores.size() - 1).toString()
-                + "\"";
+        sql += "\"" + valores.get(valores.size() - 1).toString() + "\"";
 
         sql += ")";
 
@@ -99,8 +96,8 @@ public class SQLiteDatabase implements Database {
             st.setQueryTimeout(30); // 30 segundos para timeout
             st.executeUpdate(sql);
             ResultSet rs = st.executeQuery("SELECT last_insert_rowid()");
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 int id = rs.getInt(1);
                 System.out.println("Id: " + id);
                 return id;
