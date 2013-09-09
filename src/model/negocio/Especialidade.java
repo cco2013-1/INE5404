@@ -8,7 +8,7 @@ import model.bancoDeDados.SQLiteDatabase;
 public class Especialidade {
 	
 	//Constantes
-	private static final String TABELA = "especialidades";
+	private static final String TABELA = "especialidade";
 	private static final String[] COLUNAS = {"id_tratamento"}; 
 	
 	
