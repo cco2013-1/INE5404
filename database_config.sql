@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = "ON";
+
 CREATE TABLE dados_pessoais (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	nome TEXT,
