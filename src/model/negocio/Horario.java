@@ -10,19 +10,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import sun.tools.tree.ThisExpression;
 import model.bancoDeDados.Database;
+import model.bancoDeDados.DatabaseObject;
 import model.negocio.Horario;
 import model.bancoDeDados.SQLDatabase;
 import model.auxiliar.Hora;
 import model.pessoas.Paciente;
 import model.pessoas.Profissional;
 
-public class Horario {
+public class Horario implements DatabaseObject {
 	//Constantes
-		private static final String TABELA_H = "horarios";
+		private static final String TABELA = "horarios";
 		private static final String TABELA_PH = "pacientes_horarios";
-		private static final String[] COLUNAS_H = {"id_profissional","horario_inicio","horario_fim","id_sala","comentarios","id_tratamento"};
-		private static final String[] COLUNAS_PH= {"id_paciente","id_horario"};
+		private static final String[] COLUNAS = { "horario_inicio", "horario_fim", 
+			"id_profissional", "id_tratamento", "id_sala", "comentarios" };
+		private static final String[] COLUNAS_PH= {"id_horario", "id_paciente",};
 	
 	//Atributos
 	private Hora inicio; //hora de início da sessão
@@ -41,14 +44,24 @@ public class Horario {
 		this.fim = fim;
 		this.sala = sala;
 		this.pacientes = new ArrayList<Paciente>();
+		
+		//Grava dados no Banco de Dados
+		this.gravarDados();
 	}
 
 	public List<Paciente> getPacientes() {
 		return pacientes;
 	}
 	
-	public void adicionaPaciente(Paciente p){
+	public void adicionaPaciente(Paciente p) {
 		pacientes.add(p);
+		
+		//Grava dados no banco de dados
+		HashMap<String, Object> dadosPacienteHorario = new HashMap<String, Object>();
+		Database db = new SQLDatabase();
+		dadosPacienteHorario.put(COLUNAS_PH[0], this.getID());
+		dadosPacienteHorario.put(COLUNAS_PH[1], p.getID());
+		db.gravar(TABELA_PH, dadosPacienteHorario);
 	}
 
 	public Hora getInicio() {
@@ -59,7 +72,7 @@ public class Horario {
 		return fim;
 	}
 	
-	public Sala getSala(){
+	public Sala getSala() {
 		return sala;
 	}
 
@@ -78,38 +91,52 @@ public class Horario {
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
 	}
-	public Tratamento getTratamento(){
+	
+	public Tratamento getTratamento() {
 		return this.tratamento;
 	}
-	public void setTratamento(Tratamento tratamento){
+	
+	public void setTratamento(Tratamento tratamento) {
 		this.tratamento=tratamento;
 	}
-	public int getID(){
+	
+	public int getID() {
 		return this.idHorario;
 	}
 	
-	private void gravarDados(){
+	private void gravarDados() {
 		HashMap<String, Object> dados = new HashMap<String, Object>();
 		
-		dados.put(COLUNAS_H[0],  this.profissional.getID());
-		dados.put(COLUNAS_H[1], this.inicio.toStringDB());
-		dados.put(COLUNAS_H[2], this.fim.toStringDB());
-		dados.put(COLUNAS_H[3], this.sala.getID());
-		dados.put(COLUNAS_H[4], this.comentarios);
-		dados.put(COLUNAS_H[5], this.tratamento.getID());
+		dados.put(COLUNAS[0], this.inicio.toStringDB());
+		dados.put(COLUNAS[1], this.fim.toStringDB());
+		dados.put(COLUNAS[2], this.profissional.getID());
+		dados.put(COLUNAS[3], this.tratamento.getID());
+		dados.put(COLUNAS[4], this.sala.getID());
+		dados.put(COLUNAS[5], this.comentarios);
 	
 		Database db = new SQLDatabase();
-		this.idHorario = db.gravar(Horario.TABELA_H,dados);
+		this.idHorario = db.gravar(Horario.TABELA,dados);
+		this.gravarDadosPacienteHorario();
 	}
-	private void gravarDados1(){
-		HashMap<String, Object> dados1 = new HashMap<String, Object>();
-		
-		for(int i=1; i<this.pacientes.size();i++){
-			dados1.put(COLUNAS_PH[i], this.pacientes.get(i).getID());
-		}
-		dados1.put(COLUNAS_PH[this.pacientes.size()+1], this.idHorario);
+	
+	/**
+	 * Método gravarDadosPacienteHorario
+	 * Grava os dados na tabela pacientes_horario
+	 * A tabela é composta de duas entradas apenas
+	 * id_pacientes e id_horario
+	 * Para cada horário, podem existir vários pacientes.
+	 */
+	private void gravarDadosPacienteHorario() {
+		HashMap<String, Object> dadosPacienteHorario = new HashMap<String, Object>();
 		Database db = new SQLDatabase();
-		db.gravar(Horario.TABELA_PH,dados1);
+		
+		for (int i = 0; i < this.pacientes.size(); i++) {
+			dadosPacienteHorario.put(COLUNAS_PH[0], this.getID());
+			dadosPacienteHorario.put(COLUNAS_PH[1], this.pacientes.get(i).getID());
+			db.gravar(TABELA_PH, dadosPacienteHorario);
+			dadosPacienteHorario.clear();
+		}
+		
 	}
 		
 }
