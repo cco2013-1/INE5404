@@ -5,7 +5,7 @@ import java.util.Map;
 
 import model.bancoDeDados.Database;
 import model.bancoDeDados.DatabaseObject;
-import model.bancoDeDados.SQLDatabase;
+import model.bancoDeDados.SQLiteDatabase;
 
 public class Profissional extends Pessoa implements DatabaseObject {
 	
@@ -59,7 +59,7 @@ public class Profissional extends Pessoa implements DatabaseObject {
 		dados.put(COLUNAS[0], this.dadosPessoais.getID());
 		dados.put(COLUNAS[1], this.dadosContato.getID());
 		
-		Database db = new SQLDatabase();
+		Database db = new SQLiteDatabase();
 		
 		this.idProfissional = db.gravar(Profissional.TABELA, dados);
 	}

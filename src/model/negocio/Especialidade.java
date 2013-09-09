@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.bancoDeDados.Database;
-import model.bancoDeDados.SQLDatabase;
+import model.bancoDeDados.SQLiteDatabase;
 
 public class Especialidade {
 	
@@ -31,7 +31,7 @@ public class Especialidade {
 		for(int i=0; i<tratamento.size();i++){
 			dados.put(COLUNAS[0], this.tratamento.get(i).getID());
 		}
-		Database db = new SQLDatabase();
+		Database db = new SQLiteDatabase();
 		this.idEspecialidade = db.gravar(Especialidade.TABELA,dados);
 	}
 	public int getID(){

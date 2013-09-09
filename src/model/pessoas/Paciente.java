@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import model.bancoDeDados.Database;
 import model.bancoDeDados.DatabaseObject;
-import model.bancoDeDados.SQLDatabase;
+import model.bancoDeDados.SQLiteDatabase;
 /**
  * Classe Paciente
  * @author Matheus Ben-Hur
@@ -36,7 +36,7 @@ public class Paciente extends Pessoa implements DatabaseObject {
 		dados.put(COLUNAS[0], this.dadosPessoais.getID());
 		dados.put(COLUNAS[1], this.dadosContato.getID());
 		
-		Database db = new SQLDatabase();
+		Database db = new SQLiteDatabase();
 		this.idPaciente = db.gravar(Paciente.TABELA,dados);
 	}
 	@Override

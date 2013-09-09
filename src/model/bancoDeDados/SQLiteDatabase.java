@@ -3,7 +3,7 @@ package model.bancoDeDados;
 import java.util.List;
 import java.util.Map;
 
-public class SQLDatabase implements Database {
+public class SQLiteDatabase implements Database {
 
 	@Override
 	public int gravar(String tabela, Map<String, Object> dados) {

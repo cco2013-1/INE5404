@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import model.bancoDeDados.Database;
 import model.bancoDeDados.DatabaseObject;
-import model.bancoDeDados.SQLDatabase;
+import model.bancoDeDados.SQLiteDatabase;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
@@ -54,7 +54,7 @@ public class DadosContato implements DatabaseObject {
 		dados.put(COLUNAS[1], this.telefoneCelular);
 		dados.put(COLUNAS[2], this.email);
 		
-		Database db = new SQLDatabase();
+		Database db = new SQLiteDatabase();
 		
 		this.idDadosContato = db.gravar(DadosContato.TABELA, dados);
 	}

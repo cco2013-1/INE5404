@@ -14,7 +14,7 @@ import sun.tools.tree.ThisExpression;
 import model.bancoDeDados.Database;
 import model.bancoDeDados.DatabaseObject;
 import model.negocio.Horario;
-import model.bancoDeDados.SQLDatabase;
+import model.bancoDeDados.SQLiteDatabase;
 import model.auxiliar.Hora;
 import model.pessoas.Paciente;
 import model.pessoas.Profissional;
@@ -58,7 +58,7 @@ public class Horario implements DatabaseObject {
 		
 		//Grava dados no banco de dados
 		HashMap<String, Object> dadosPacienteHorario = new HashMap<String, Object>();
-		Database db = new SQLDatabase();
+		Database db = new SQLiteDatabase();
 		dadosPacienteHorario.put(COLUNAS_PH[0], this.getID());
 		dadosPacienteHorario.put(COLUNAS_PH[1], p.getID());
 		db.gravar(TABELA_PH, dadosPacienteHorario);
@@ -114,7 +114,7 @@ public class Horario implements DatabaseObject {
 		dados.put(COLUNAS[4], this.sala.getID());
 		dados.put(COLUNAS[5], this.comentarios);
 	
-		Database db = new SQLDatabase();
+		Database db = new SQLiteDatabase();
 		this.idHorario = db.gravar(Horario.TABELA,dados);
 		this.gravarDadosPacienteHorario();
 	}
@@ -128,7 +128,7 @@ public class Horario implements DatabaseObject {
 	 */
 	private void gravarDadosPacienteHorario() {
 		HashMap<String, Object> dadosPacienteHorario = new HashMap<String, Object>();
-		Database db = new SQLDatabase();
+		Database db = new SQLiteDatabase();
 		
 		for (int i = 0; i < this.pacientes.size(); i++) {
 			dadosPacienteHorario.put(COLUNAS_PH[0], this.getID());

@@ -3,7 +3,7 @@ package model.negocio;
 import java.util.HashMap;
 
 import model.bancoDeDados.Database;
-import model.bancoDeDados.SQLDatabase;
+import model.bancoDeDados.SQLiteDatabase;
 
 public class Tratamento {
 
@@ -24,7 +24,7 @@ public class Tratamento {
 		
 		dados.put(COLUNAS[0], this.tratamento);
 		
-		Database db = new SQLDatabase();
+		Database db = new SQLiteDatabase();
 		this.idTratamento = db.gravar(Tratamento.TABELA,dados);
 	}
 	public int getID(){

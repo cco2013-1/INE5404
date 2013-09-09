@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 import model.auxiliar.Data;
 import model.bancoDeDados.Database;
 import model.bancoDeDados.DatabaseObject;
-import model.bancoDeDados.SQLDatabase;
+import model.bancoDeDados.SQLiteDatabase;
 
 /**
  * Classe DadosPessoais
@@ -156,7 +156,7 @@ public class DadosPessoais implements DatabaseObject {
 		dados.put(COLUNAS[2], this.CPF);
 		dados.put(COLUNAS[3], this.RG);
 		
-		Database db = new SQLDatabase();
+		Database db = new SQLiteDatabase();
 		
 		this.idDadosPessoais = db.gravar(DadosPessoais.TABELA, dados);
 	}
